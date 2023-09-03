@@ -1,21 +1,18 @@
 <div class="side-bar-header">
  <div class="user-name">
-  <a href="#">Tom</a>
+  <%= link_to current_user.name, edit_user_path(current_user) %>
  </div>
  <div class="create-rooms">
-  <a href="#">チャットを作成する</a>
+  <%= link_to "チャットを作成する", new_room_path %>
  </div>
 </div>
 
 <div class="rooms">
- <div class="room">
-  <div class="room-name"> 
-   <a href="#">techroom1</a>
+ <% current_user.rooms.each do |room| %>
+ <!-- eachメソッドでログインしているユーザーがいるすべてのチャットルームに対して同じ処理を行う -->
+  <div class="room">
+   <div class="room-name"> 
+    <a href="#"><%= room.name %></a>
+   </div>
   </div>
- </div>
- <div class="room">
-  <div class="room-name">
-   <a href="#">techroom2</a>
-  </div>
- </div>
 </div>
