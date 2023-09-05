@@ -10,13 +10,8 @@
 </div>
 
 <div class="messages">
- <div class="message">
-  <div class="message-information">
-   <div class="message-user">Tom</div>
-   <div class="message-date">2020/3/31(Wed) 12:42:30</div>
-  </div>
-  <div class="message-content">おはよう</div>
- </div>
+ <%= render partial: 'message', collection: @messages %>
+ <!-- collectionオプションを用いて複数要素が入っている@messagesから取り出された一つ一つの要素を_message.html.erbにおいてmessageとして扱う -->
 </div>
 
 <%= form_with model: [@room, @message], class: 'form', local: true do |f| %>

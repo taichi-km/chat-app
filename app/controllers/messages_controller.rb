@@ -2,6 +2,8 @@ class MessagesController < ApplicationController
   def index
     @room = Room.find(params[:room_id])
     @message = Message.new
+    @messages = @room.messages.includes(:user)  #チャットルームに紐づく全てのメッセージを@messagesと定義する
+    #メッセージ情報にはユーザー情報も紐づいて表示されるがそのときに発生するN+1問題を防ぐために、includesメソッドを使う
   end
 
   def create
@@ -11,6 +13,7 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to room_messages_path(@room)
     else
+      @messages = @room.messages.includes(:user)
       render :index, status: :unprocessable_entity
     end
   end
