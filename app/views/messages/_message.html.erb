@@ -11,5 +11,9 @@
     <div class="message-content">
       <%= message.content %>
     </div>
+    <%= image_tag message.image.variant(resize: '500x500'), class: 'messsage-image' if message.image.attached? %>
+    <!-- image_tagメソッドでmessageモデルのimageのimg要素を生成する
+         attached?メソッドで画像が存在する場合のみimage_tagが読み込まれるようにする
+         variantメソッドでファイルのサイズを指定する                              -->
   </div>
 </div>
