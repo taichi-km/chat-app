@@ -12,7 +12,8 @@
  <!-- eachメソッドでログインしているユーザーがいるすべてのチャットルームに対して同じ処理を行う -->
   <div class="room">
    <div class="room-name"> 
-    <a href="#"><%= room.name %></a>
+    <%= link_to room.name , room_messages_path(room) %>
+    <!-- パスにroomを引用することで、メッセージと紐づいているチャットルームのidを持たせる -->
    </div>
   </div>
  <% end %>
